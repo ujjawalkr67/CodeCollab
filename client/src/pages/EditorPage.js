@@ -73,10 +73,10 @@ const EditorPage = () => {
     };
     init();
     return () => {
-      socketRef.current.off(ACTIONS.JOINED);
-      socketRef.current.off(ACTIONS.DISCONNECTED);
-      socketRef.current.off(ACTIONS.SEND_MESSAGE);
-      socketRef.current.disconnect();
+      socketRef.current?.off(ACTIONS.JOINED);
+      socketRef.current?.off(ACTIONS.DISCONNECTED);
+      socketRef.current?.off(ACTIONS.SEND_MESSAGE);
+      socketRef.current?.disconnect();
     };
   }, []);
 
