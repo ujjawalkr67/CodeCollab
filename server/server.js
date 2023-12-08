@@ -43,13 +43,18 @@ io.on('connection', (socket) => {
             code
         });
     })
-    socket.on(ACTIONS.SEND, ({ roomId, messages, currentuser }) => {
-        io.in(roomId).emit(ACTIONS.RECEIVE, {
-            messages,
-            currentuser,
-        });
+    // socket.on(ACTIONS.SEND_MESSAGE, ({ roomId, messages, currentuser }) => {
+    //     io.in(roomId).emit(ACTIONS.RECEIVE, {
+    //         messages,
+    //         currentuser,
+    //     });
 
-    })
+    // })
+
+  socket.on(ACTIONS.SEND_MESSAGE, ({ roomId, message }) => {
+    socket.in(roomId).emit(ACTIONS.SEND_MESSAGE, { message });
+  });
+  
     socket.on(ACTIONS.SYNC_CODE, ({ code, socketId }) => {
         io.to(socketId).emit(ACTIONS.CODE_CHANGE, {
             code
@@ -68,9 +73,6 @@ io.on('connection', (socket) => {
         delete userSocketMap[socket.id];
         socket.leave();
     })
-
-
-
 })
 
 app.get('/', (req, res) => {

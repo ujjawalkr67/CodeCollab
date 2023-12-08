@@ -5,7 +5,6 @@ const ACTIONS={
     CODE_CHANGE:'code-change',
     SYNC_CODE:'sync-code',
     LEAVE:'leave',
-    SEND:'sending',
-    RECEIVE:'receiving',
+    SEND_MESSAGE: "send-message",
 };
 module.exports =ACTIONS;
